@@ -5,6 +5,7 @@ PEWS is a controller for SUID privilege escalation vulnerabilities.
 ## Usage
 
 ```bash
+chmod +x pews.sh
 ./pews.sh
 ```
 
