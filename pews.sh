@@ -29,7 +29,7 @@ list_suid() {
     
     suidfiles=$(find / -perm -u=s -type f 2>/dev/null)
     if [[ ! -z $suidfiles ]]; then
-        printf "${yellow}[!]${green} SUID files found: \n"
+        printf "${yellow}[!]${green} SUID files found: \n\n"
         for file in $suidfiles; do
             printf "${yellow}[+]${cyan} $file\n"
             sleep 0.1
@@ -467,21 +467,9 @@ scan_vuln(){
     fi
 }
 
-backtomenu_option() {
-printf "\n"
-printf "${green}[+] Return to Main Menu? ${yellow}[y/n] ${clear}"
-read backtomenu
-if [ $backtomenu = "y" ]; then
-returncommand=$(find / -name "pews.sh" 2>/dev/null)
-bash $returncommand
-elif [ $backtomenu = "n" ]; then
-exit
-else
-printf "${red}[-] Invalid option!${clear}\n"
-backtomenu_option
-fi
-}
+main(){
 
+clear
 banner
 printf "${yellow}[1]${clear}${cyan}List All SUID Files${clear}\n"
 printf "${yellow}[2]${clear}${cyan}Scan Possible Vulnerable SUID Commands${clear}\n"
@@ -489,12 +477,28 @@ printf "${cyan}Select an option: ${clear}"
 read option
 
 if [ $option -eq 1 ]; then
-    printf "${cyan}Listing all SUID files...${clear}\n"
+    printf "${cyan}Listing all SUID files...${clear}\n\n"
     list_suid
 elif [ $option -eq 2 ]; then
-    printf "${cyan}Scanning for possible vulnerable SUID commands...${clear}\n"
+    printf "${cyan}Scanning for possible vulnerable SUID commands...${clear}\n\n"
     scan_vuln
 else
     printf "${red}[-] Invalid option ${clear}\n"
 fi
+}
+
+backtomenu_option() {
+printf "\n"
+printf "${green}[+] Return to Main Menu? ${yellow}[y/n] ${clear}"
+read backtomenu
+if [ $backtomenu = "y" ]; then
+main
+elif [ $backtomenu = "n" ]; then
+exit
+else
+printf "${red}[-] Invalid option!${clear}\n"
+backtomenu_option
+fi
+}
+main
 backtomenu_option
