@@ -1,4 +1,4 @@
-# Privilege Escalation With SUID
+# Privilege Escalation With SUID - PEWS
 
 PEWS is a controller for SUID privilege escalation vulnerabilities.
 
