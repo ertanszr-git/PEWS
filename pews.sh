@@ -8,6 +8,16 @@ white='\e[1;37m'
 cyan='\e[1;36m'
 clear='\e[0m'
 
+
+banner(){
+    printf "${cyan}____________________       _________
+___  __ \__  ____/_ |     / /_  ___/
+__  /_/ /_  __/  __ | /| / /_____ \ 
+_  ____/_  /___  __ |/ |/ / ____/ /
+/_/     /_____/  ____/|__/  /____/ \n${clear}
+${yellow}Privilege Escalation With SUID${clear}\n\n"
+}
+
 list_suid() {
     
     suidfiles=$(find / -perm -u=s -type f 2>/dev/null)
@@ -450,8 +460,22 @@ scan_vuln(){
     fi
 }
 
+backtomenu_option() {
+printf "\n"
+printf "${green}[+] Return to Main Menu? ${yellow}[y/n] ${clear}"
+read backtomenu
+if [ $backtomenu = "y" ]; then
+returncommand=$(find / -name "pews.sh" 2>/dev/null)
+bash $returncommand
+elif [ $backtomenu = "n" ]; then
+exit
+else
+printf "${red}[-] Invalid option!${clear}\n"
+backtomenu_option
+fi
+}
 
-
+banner
 printf "${yellow}[1]${clear}${cyan}List All SUID Files${clear}\n"
 printf "${yellow}[2]${clear}${cyan}Scan Possible Vulnerable SUID Commands${clear}\n"
 printf "${cyan}Select an option: ${clear}"
@@ -466,3 +490,4 @@ elif [ $option -eq 2 ]; then
 else
     printf "${red}[-] Invalid option ${clear}\n"
 fi
+backtomenu_option
