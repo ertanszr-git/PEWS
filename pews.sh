@@ -15,7 +15,13 @@ ___  __ \__  ____/_ |     / /_  ___/
 __  /_/ /_  __/  __ | /| / /_____ \ 
 _  ____/_  /___  __ |/ |/ / ____/ /
 /_/     /_____/  ____/|__/  /____/ \n${clear}
-${yellow}Privilege Escalation With SUID${clear}\n\n"
+${yellow}Privilege Escalation With SUID${clear}\n
+_________________________________________
+       Coded by ertanszr. Please use only
+       educational purpose. Not use illegally.
+                 github.com/ertanszr-git
+                 twitter.com/ertanszr
+       -----------------------------------------\n\n"
 }
 
 list_suid() {
