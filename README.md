@@ -2,6 +2,29 @@
 
 PEWS is a controller for SUID privilege escalation vulnerabilities.
 
+
+```
+____________________       _________
+___  __ \__  ____/_ |     / /_  ___/
+__  /_/ /_  __/  __ | /| / /_____ \
+_  ____/_  /___  __ |/ |/ / ____/ /
+/_/     /_____/  ____/|__/  /____/
+
+Privilege Escalation With SUID
+
+-----------------------------------------
+Coded by ertanszr.
+Please use only educational purpose.
+Not use illegally.
+github.com/ertanszr-git
+twitter.com/ertanszr
+-----------------------------------------
+
+[1]List All SUID Files
+[2]Scan Possible Vulnerable SUID Commands
+Select an option:
+```
+
 ## Usage
 
 ```bash
