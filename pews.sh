@@ -29,9 +29,9 @@ list_suid() {
     
     suidfiles=$(find / -perm -u=s -type f 2>/dev/null)
     if [[ ! -z $suidfiles ]]; then
-        printf "${yellow}[!]${green} SUID files found: \n\n"
+        printf "${yellow}[!]${green} SUID files found: ${clear}\n\n"
         for file in $suidfiles; do
-            printf "${yellow}[+]${cyan} $file\n"
+            printf "${yellow}[+]${cyan} $file ${clear}\n"
             sleep 0.1
         done
     else
@@ -42,20 +42,24 @@ list_suid() {
 
 
 scan_vuln(){
+    printf "${cyan}Enter name of the log file : ${clear}"
+    read logname
     suidfiles=$(find / -perm -u=s -type f 2>/dev/null | sed -E 's/.*\/(.*)$/\1/')
     i=0
     while [[ $i -lt $[$(wc -l pews.conf | awk '{print $1;}')-1] ]]; do
         i=$[$i+1]
         if [[ $suidfiles =~ $(awk 'c&&!--c;/config/{c='$i'}' pews.conf | awk '{print $1;}' | tr 'ğ' ' ' | tr -s " ") ]]; then
-            printf ${green}[+] Found $(awk 'c&&!--c;/config/{c='$i'}' pews.conf | awk '{print $1;}' | tr 'ğ' ' ' | tr -s " ") ${clear}\n
-            printf  ${cyan} ╰─> $(awk 'c&&!--c;/config/{c='$i'}' pews.conf | awk '{print $2;}' | tr 'ğ' ' ' | tr -s " ") ${clear}\n
+            printf "${green}[+] Found $(awk 'c&&!--c;/config/{c='$i'}' pews.conf | awk '{print $1;}' | tr 'ğ' ' ' | tr -s " ") ${clear}\n" | tee -a $logname.log
+            printf  "${cyan} ╰─> $(awk 'c&&!--c;/config/{c='$i'}' pews.conf | awk '{print $2;}' | tr 'ğ' ' ' | tr -s " ") ${clear}\n" | tee -a $logname.log
             sleep 0.1
         else
-            printf "${red}[-] Not found $(awk 'c&&!--c;/config/{c='$i'}' pews.conf | awk '{print $1;}' | tr 'ğ' ' ' | tr -s " ") ${clear}\n"
+            printf "${red}[-] Not found $(awk 'c&&!--c;/config/{c='$i'}' pews.conf | awk '{print $1;}' | tr 'ğ' ' ' | tr -s " ") ${clear}\n" | tee -a $logname.log
             sleep 0.1
         fi
     done
 }
+
+
 
 main(){
 
