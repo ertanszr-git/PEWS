@@ -1,2 +1,2 @@
-cd /usr/share/PEWS
+cd /usr/share/pews
 bash pews.sh
