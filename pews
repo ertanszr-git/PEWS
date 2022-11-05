@@ -1,2 +1,3 @@
 cd /usr/share/pews
+chmod +x pews.sh
 bash pews.sh
