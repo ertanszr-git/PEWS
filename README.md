@@ -13,11 +13,11 @@ _  ____/_  /___  __ |/ |/ / ____/ /
 Privilege Escalation With SUID
 
 -----------------------------------------
-Coded by ertanszr.
+Coded by ertanszr and melisanur.
 Please use only educational purpose.
 Not use illegally.
 github.com/ertanszr-git
-twitter.com/ertanszr
+github.com/melisanur
 -----------------------------------------
 
 [1]List All SUID Files
