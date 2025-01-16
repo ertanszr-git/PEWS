@@ -17,11 +17,11 @@ _  ____/_  /___  __ |/ |/ / ____/ /
 /_/     /_____/  ____/|__/  /____/ \n${clear}
 ${yellow}Privilege Escalation With SUID${clear}\n
 ${cyan}-----------------------------------------
-Coded by ertanszr. 
+Coded by ertanszr and melisanur. 
 Please use only educational purpose. 
 Not use illegally.
 github.com/ertanszr-git
-twitter.com/ertanszr
+github.com/melisanur
 -----------------------------------------${clear}\n\n"
 }
 
